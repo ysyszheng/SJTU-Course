@@ -1,6 +1,6 @@
 # ARMASM Lab
 
-SJTU-NIS2331 Computer Composition and System Architecture course lab: ARM assembly implementation of matrix multiplication.
+SJTU-NIS2331 Computer Organization and Architecture course lab: ARM assembly implementation of matrix multiplication.
 
 ## Environment
 
