@@ -1,0 +1,315 @@
+#
+# Work based on https://github.com/mmistakes/minimal-mistakes/blob/master/_data/ui-text.yml
+#
+# Configuration: Add to _config.yml
+# locale: "en-US"  [YOUR PREFERRED LOCALE]
+#
+# How to use:
+# {{ site.data.ui-text[site.locale].<var_name> | default: 'text' }}
+
+# English (default)
+# -----------------
+en: &DEFAULT_EN
+  header:
+    title: 欢迎来到花花园林的世界！
+    text: 不到园林<br/>怎知春色如许
+    button: 开启西方园林之旅
+    buttonlink: "#portfolio"
+
+  services:
+    title: "Welcome to our AMAZING journey!"
+    # text: "Lorem ipsum"
+    # section: services
+    # list:
+    #   - title: "E-Commerce"
+    #     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+    #     icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
+    #   - title: "Responsive Design"
+    #     desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+    #     icon: fas fa-laptop
+    #   - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
+    #     desc: "Your description here, full **Markdown** support"
+    #     icon: fab fa-markdown
+
+  portfolio:
+    title: "园林品鉴"
+    text: "6个时期西方风景园林样式"
+    section: portfolio
+    closebutton: "关闭"
+
+  timeline: 
+    title: "时间轴"
+    text: "西方风景园林样式变迁"
+    section: timeline
+    # left is the default
+    #start_align: "left"
+    events:
+      - title: "古代造园时期"
+        year: "2700B.C.-500B.C."
+        desc: "埋藏千年的伟大"
+        image: assets/img/timeline/1.jpg
+        alt:
+      - title: "中世纪造园时期"
+        year: "5A.D.-14A.D."
+        desc: "黑暗时期的灿烂烟火"
+        image: assets/img/timeline/2.jpg
+        alt:
+      - title: "文艺复兴造园时期"
+        year: "14A.D.-17A.D."
+        desc: "无拘无束的幻想"
+        image: assets/img/timeline/3.jpg
+        alt: 
+        - title: "古典主义造园时期"
+        year: "16A.D.-18A.D."
+        desc: "征服自然之乐"
+        image: assets/img/timeline/4.jpg
+        alt:
+      - title: "自然风景式造园时期"
+        year: "18A.D.-19A.D."
+        desc: "纯净浪漫的田园风光"
+        image: assets/img/timeline/5.jpg
+        alt: 
+      - title: "城市公园与现代景观"
+        year: "19A.D.-至今"
+        desc: "现代主义与新思潮"
+        image: assets/img/timeline/6.jpg
+        alt:
+        # you can enforce the alignment
+        align: left
+    end: "当代<br/>造园<br/>时期"
+
+  about:
+    title: "关于我们"
+    text: "our story"
+    body: "本网站是**西方风景园林艺术史**课程中**思源湖底风景鉴赏队**的课程项目<br/>旨在建立一个分门别类、框架清晰、能帮助大家了解**西方风景园林之美**的空间<br/>[项目程序地址](https://github.com/ArtistYusen/GA903-Landscape-Architecture-Web/)"
+    section: about
+
+
+  team:
+    title: "团队成员"
+    text: "Our amazing team!"
+    # subtext: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported.
+    section: team
+    people:
+      - name: "郑宇森"
+        # role: "Lead Designer"
+        image: assets/img/team/1.jpg
+        # social:
+        #   - url: https://twitter.com
+        #     icon: fab fa-twitter
+        #   - url: https://facebook.com
+        #     icon: fab fa-facebook-f
+        #   - url: https://linkedin.com
+        #     icon: fab fa-linkedin-in
+      - name: "金驰"
+        # role: "Lead Marketer"
+        image: assets/img/team/2.jpg
+        # social:
+        #   - url: https://twitter.com
+        #     icon: fab fa-twitter
+        #   - url: https://facebook.com
+        #     icon: fab fa-facebook-f
+        #   - url: https://linkedin.com
+        #     icon: fab fa-linkedin-in
+      - name: "尤飞扬"
+        # role: "Lead Developer"
+        image: assets/img/team/3.jpg
+        # social:
+        #   - url: https://twitter.com
+        #     icon: fab fa-twitter
+        #   - url: https://facebook.com
+        #     icon: fab fa-facebook-f
+        #   - url: https://linkedin.com
+        #     icon: fab fa-linkedin-in
+
+  contact:
+    title: "联系我们"
+    text: "欢迎向我们小组提出建议"
+    section: contact
+    name: "昵称*"
+    name-validation: "请输入您的昵称"
+    email: "Email*"
+    email-validation: "请输入您的电子邮件"
+    phone: "电话号码"
+    phone-validation: "请输入您的电话号码"
+    message: "建议或意见*"
+    message-validation: "请输入您的建议或意见"
+    subject: "Contact Form Submission"
+    submit: "发送"
+
+  footer:
+    legal: "参考资料及版权声明"
+    social:
+      # - url: https://twitter.com
+      #   icon: "fab fa-twitter"
+      # - url: https://facebook.com
+      #   icon: "fab fa-facebook-f"
+      # - url: https://linkedin.com
+      #   icon: "fab fa-linkedin-in"
+      - url: https://github.com/ArtistYusen/GA903-Landscape-Architecture-Web
+        icon: "fab fa-github"
+      # - url: https://instagram.com
+      #   icon: "fab fa-instagram"
+en-US:
+  <<: *DEFAULT_EN
+en-CA:
+  <<: *DEFAULT_EN
+en-GB:
+  <<: *DEFAULT_EN
+en-AU:
+  <<: *DEFAULT_EN
+
+# # Spanish
+# # -------
+# es: &DEFAULT_ES
+#   header:
+#     title: ¡Bienvenido a nuestro Estudio!
+#     text: Es un placer conocerle
+#     button: Ver más
+#     buttonlink: "#portafolio"
+
+#   # services:
+#   #   title: "Servicios"
+#   #   text: "Lorem ipsum"
+#   #   section: servicios
+#   #   list:
+#   #     - title: "Comercio Electrónico"
+#   #       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+#   #       icon: fas fa-shopping-cart #find more at https://fontawesome.com/icons
+#   #     - title: "Diseño Responsivo"
+#   #       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit."
+#   #       icon: fas fa-laptop
+#   #     - title: "[Markdown](https://en.wikipedia.org/wiki/Markdown)"
+#   #       desc: "Su descripción aquí, soporte completo de **Markdown**"
+#   #       icon: fab fa-markdown
+
+#   portfolio:
+#     title: "Portafolio"
+#     text: "Lorem ipsum dolor sit amet consectetur."
+#     section: portafolio
+#     closebutton: "Cerrar Proyecto"
+
+#   timeline:
+#     title: "Cronología"
+#     text: "Lorem ipsum timeline"
+#     section: cronologia
+#     # left is the default
+#     #start_align: "left"
+#     events:
+#       - title: "Nuestro Humilde Comienzo"
+#         year: "2009-2011"
+#         desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+#         image: assets/img/timeline/1.jpg
+#         alt:
+#       - title: "Una Agencia nace"
+#         year: "March 2011"
+#         desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+#         image: assets/img/timeline/2.jpg
+#         alt:
+#       - title: "La plantilla Jekyll es creada"
+#         year: "2019"
+#         desc: "Ravi Riley convirtió Agency, una plantilla basada en Bootstrap, en una plantilla de Jekyll. La plantilla Jekyll puede ser instalada commo una gema de Ruby (Ruby gem) o remotamente. Para más información, visite la documentación."
+#         image: assets/img/timeline/3.jpg
+#         alt: image alt text
+#       - title: "Título"
+#         year: "2009-2011"
+#         desc: "Su descripción aquí, **Markdown** es soportado completamente."
+#         image: assets/img/timeline/4.jpg
+#         alt:
+#         # you can enforce the alignment
+#         align: right
+#     end: "¡Se parte <br> de Nuestra <br> Historia!"
+
+#   about:
+#     title: "Sobre nosotros"
+#     text: "nuestra historia"
+#     body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported."
+#     section: nosotros
+
+#   clients:
+#     section: clientes
+#     max-height: 100px
+#     horizontal-scrolling: "" #"yes/no"
+#     list:
+#       - title: "envato"
+#         url: https://github.com/raviriley/agency-jekyll-theme
+#         logo: assets/img/clients/envato.jpg
+#       - title: "designmodo"
+#         url: https://github.com/raviriley/agency-jekyll-theme
+#         logo: assets/img/clients/designmodo.jpg
+#       - title: "themeforest"
+#         url: https://github.com/raviriley/agency-jekyll-theme
+#         logo: assets/img/clients/themeforest.jpg
+#       - title: "Creative Market"
+#         url: https://github.com/raviriley/agency-jekyll-theme
+#         logo: assets/img/clients/creative-market.jpg
+
+#   team:
+#     title: "NUESTRO INCREÍBLE EQUIPO"
+#     text: "Lorem ipsum dolor sit amet consectetur."
+#     subtext: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde. **Markdown** supported.
+#     section: equipo
+#     people:
+#       - name: "Kay Garland"
+#         role: "Lead Designer"
+#         image: assets/img/team/500x500.jpg
+#         social:
+#           - url: https://twitter.com
+#             icon: fab fa-twitter
+#           - url: https://facebook.com
+#             icon: fab fa-facebook-f
+#           - url: https://linkedin.com
+#             icon: fab fa-linkedin-in
+#       - name: "Larry Parker"
+#         role: "Lead Marketer"
+#         image: assets/img/team/2.jpg
+#         social:
+#           - url: https://twitter.com
+#             icon: fab fa-twitter
+#           - url: https://facebook.com
+#             icon: fab fa-facebook-f
+#           - url: https://linkedin.com
+#             icon: fab fa-linkedin-in
+#       - name: "Diana Perterson"
+#         role: "Lead Developer"
+#         image: assets/img/team/500x500.jpg
+#         social:
+#           - url: https://twitter.com
+#             icon: fab fa-twitter
+#           - url: https://facebook.com
+#             icon: fab fa-facebook-f
+#           - url: https://linkedin.com
+#             icon: fab fa-linkedin-in
+
+#   contact:
+#     title: "Contáctenos"
+#     text: "Lorem ipsum or call 123456789"
+#     section: contacto
+#     name: "Nombre*"
+#     name-validation: "Por favor ingrese su nombre."
+#     email: "Correo Electrónico*"
+#     email-validation: "Por favor ingrese su correo electrónico."
+#     phone: "Número Telefónico*"
+#     phone-validation: "Por favor ingrese su número telefónico."
+#     message: "Mensaje*"
+#     message-validation: "Por favor escriba un mensaje."
+#     subject: "Envío del formulario de contacto"
+#     submit: "Enviar Mensaje"
+
+#   footer:
+#     legal: "Política de Privacidad"
+#     social:
+#       - url: https://twitter.com
+#         icon: "fab fa-twitter"
+#       - url: https://facebook.com
+#         icon: "fab fa-facebook-f"
+#       - url: https://linkedin.com
+#         icon: "fab fa-linkedin-in"
+#       - url: https://github.com/raviriley/agency-jekyll-theme
+#         icon: "fab fa-github"
+#       - url: https://instagram.com
+#         icon: "fab fa-instagram"
+# es-ES:
+#   <<: *DEFAULT_ES
+# es-CO:
+#   <<: *DEFAULT_ES
