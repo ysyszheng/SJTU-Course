@@ -1,0 +1,3 @@
+<view class="page">
+  <seatList id="seat" seatings="{{seatings}}" hallNumber="{{buildingName}}"/>
+</view>

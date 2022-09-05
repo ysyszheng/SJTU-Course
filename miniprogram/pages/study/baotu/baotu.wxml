@@ -1,0 +1,4 @@
+<!--pages/study/baotu/baotu.wxml-->
+<view class="page">
+  <seatList id="seat" seatings="{{seatings}}" hallNumber="{{buildingName}}"/>
+</view>
