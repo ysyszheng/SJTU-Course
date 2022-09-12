@@ -5,6 +5,7 @@ View all courses by [switching branches](https://github.com/ysyszheng/SJTU-Cours
 
 ## 2021 Fall
 <details open>
+<summary>branch list</summary>
 
 * [CS0501 Data Structure](https://github.com/ysyszheng/SJTU-Course/tree/CS0501)
 
@@ -12,6 +13,7 @@ View all courses by [switching branches](https://github.com/ysyszheng/SJTU-Cours
 
 ## 2022 Spring
 <details open>
+<summary>branch list</summary>
 
 * [AU335 Comupter Vison](https://github.com/ysyszheng/SJTU-Course/tree/AU335)
 * [NIS2331 Computer Organization and Architecture](https://github.com/ysyszheng/SJTU-Course/tree/NIS2331)
@@ -23,6 +25,7 @@ View all courses by [switching branches](https://github.com/ysyszheng/SJTU-Cours
 
 ## 2022 Fall
 <details open>
+<summary>branch list</summary>
 
 * ...
 
