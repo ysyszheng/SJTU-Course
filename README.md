@@ -1,6 +1,6 @@
 # SJTU Course
 
-Personal coursework at Shanghai Jiaotong University, **computer science** and **economics** related.
+Personal coursework at Shanghai Jiaotong University, computer science and economics related.
 View all courses by [switching branches](https://github.com/ysyszheng/SJTU-Course/branches).
 
 ## 2021 Fall
