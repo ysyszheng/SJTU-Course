@@ -14,4 +14,4 @@ View all courses by [switching branches](https://github.com/ysyszheng/SJTU-Cours
 * [GA903 Landscape Architecture](https://github.com/ysyszheng/SJTU-Course/tree/GA903)
 
 ## 2022 Fall
-* ...
+* [NIS3325 Operating System](https://github.com/ysyszheng/SJTU-Course/tree/NIS3325)
