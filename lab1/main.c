@@ -11,6 +11,7 @@
 #define ANSI_COLOR_GREEN "\x1b[32m"
 #define ANSI_COLOR_YELLOW "\x1b[33m"
 #define ANSI_COLOR_BLUE "\x1b[34m"
+#define ANSI_COLOR_RESET "\x1b[0m"
 
 #define CORE_SIZE 1000
 #define VERBOSE 1
@@ -28,6 +29,8 @@ void init_coremap(unsigned);
 char *lmalloc(unsigned);
 void lfree(unsigned, char *);
 void print_free_mem();
+void input();
+void test();
 
 // function definitions
 void init_coremap(unsigned size) {
@@ -43,10 +46,15 @@ void init_coremap(unsigned size) {
 }
 
 char *lmalloc(unsigned size) {
+  // wrong arguments
+  if (size <= 0 || size >= CORE_SIZE) {
+    printf(ANSI_COLOR_RED "****** ERROR: wrong arguments! ******" ANSI_COLOR_RESET "\n");
+    return NULL;
+  }
   // all memory has been allocated
   if (coremap == NULL) {
     printf(ANSI_COLOR_RED "****** ERROR: All kernel space has been used! "
-                          "******" ANSI_COLOR_RED "\n");
+                          "******" ANSI_COLOR_RESET "\n");
     return NULL;
   }
 
@@ -65,7 +73,7 @@ char *lmalloc(unsigned size) {
         // all memory has been allocated
         if (p->next == p) {
           printf(ANSI_COLOR_YELLOW "****** WARNING: All kernel space has been "
-                                   "used! ******" ANSI_COLOR_YELLOW "\n");
+                                   "used! ******" ANSI_COLOR_RESET "\n");
           coremap = NULL;
         } else {
           coremap = p->next;
@@ -76,7 +84,7 @@ char *lmalloc(unsigned size) {
       }
 
       printf(ANSI_COLOR_GREEN "Memory allocated succeeded, address: %p - %p, "
-                              "size: %u" ANSI_COLOR_GREEN "\n",
+                              "size: %u" ANSI_COLOR_RESET "\n",
              addr, addr + size, size);
       if (VERBOSE) {
         print_free_mem();
@@ -88,15 +96,16 @@ char *lmalloc(unsigned size) {
   } while (p != q);
 
   printf(ANSI_COLOR_RED "****** ERROR: Required memory space [%d byte] is too "
-                        "large! ******" ANSI_COLOR_RED "\n",
+                        "large! ******" ANSI_COLOR_RESET "\n",
          size);
   return NULL;
 }
 
 void lfree(unsigned size, char *addr) {
-  if (addr == NULL) {
-    printf(ANSI_COLOR_RED
-           "****** ERROR: Memory address is NULL! ******" ANSI_COLOR_RED "\n");
+  // wrong arguments
+  if (size <= 0 || size >= CORE_SIZE || addr == NULL) {
+    printf(ANSI_COLOR_RED "****** ERROR: wrong arguments! ******" ANSI_COLOR_RESET "\n");
+    return;
   }
 
   // all memory has been allocated
@@ -111,11 +120,11 @@ void lfree(unsigned size, char *addr) {
 
   // find the right address, let addr between p->m_addr & p->next->m_addr
   struct map *p = coremap; // TODO after free, need to change coremap position
-  while ((p->m_addr < addr &&
-          p->next->m_addr > addr) ||       // e.g. .. 100 .. [250] .. 300 ..
-         ((p->m_addr < addr ||             // e.g. [50] .. 100 ..
-           p->next->m_addr > addr) &&      // e.g. .. 800 [900]
-          p->m_addr >= p->next->m_addr)) { // = for only one node
+  while (!((p->m_addr < addr &&
+            p->next->m_addr > addr) ||        // e.g. .. 100 .. [250] .. 300 ..
+           ((p->m_addr < addr ||              // e.g. [50] .. 100 ..
+             p->next->m_addr > addr) &&       // e.g. .. 800 [900]
+            p->m_addr >= p->next->m_addr))) { // = for only one node
     p = p->next;
   }
 
@@ -124,7 +133,10 @@ void lfree(unsigned size, char *addr) {
       p->m_size += (size + p->next->m_size);
       struct map *q = p->next;
       p->next = q->next;
-      p->next->prior = p;
+      q->next->prior = p;
+      if (coremap == q) {
+        coremap = p;
+      }
       free(q);
     } else { // case 2: adjacent to front
       p->m_size += size;
@@ -145,7 +157,7 @@ void lfree(unsigned size, char *addr) {
   }
 
   printf(ANSI_COLOR_GREEN
-         "Memory free succeeded, address: %p - %p, size: %u" ANSI_COLOR_GREEN
+         "Memory free succeeded, address: %p - %p, size: %u" ANSI_COLOR_RESET
          "\n",
          addr, addr + size, size);
   if (VERBOSE) {
@@ -157,33 +169,78 @@ void lfree(unsigned size, char *addr) {
 // print free memory partition
 void print_free_mem() {
   printf(ANSI_COLOR_BLUE
-         "****************Start Print****************" ANSI_COLOR_BLUE "\n");
+         "****************Start Print****************" ANSI_COLOR_RESET "\n");
+  // all memory has been allocated
+  if (coremap == NULL) {
+    printf("None avaliable memory partition.\n");
+    return;
+  }
   struct map *p = coremap;
   printf("Avaliable memory partition:\n");
   do {
     printf("memory address: %p - %p, size: %u\n", p->m_addr,
            p->m_addr + p->m_size, p->m_size);
+    p = p->next;
   } while (p != coremap);
   printf(ANSI_COLOR_BLUE
-         "****************End Print****************" ANSI_COLOR_BLUE "\n");
+         "****************End Print****************" ANSI_COLOR_RESET "\n");
   return;
+}
+
+void input() {
+  char cmdchar;
+  unsigned size;
+  char *addr;
+  do {
+    printf("Input command, Q/q quit.\n");
+    do {
+      cmdchar = getchar();
+    } while (cmdchar == ' ' || cmdchar == '\t' || cmdchar == '\n');
+
+    switch (cmdchar) {
+    case 'm':
+      scanf("%u", &size);
+      lmalloc(size);
+      break;
+
+    case 'f':
+      scanf("%u%p", &size, &addr);
+      lfree(size, addr);
+      break;
+
+    case 'q':
+      break;
+
+    default:
+      continue;
+    }
+  } while (cmdchar != 'q');
+}
+
+// test memory allocation and free
+void test() {
+  char *m1 = lmalloc(100);
+  char *m2 = lmalloc(100);
+  char *m3 = lmalloc(100);
+  lfree(100, m1);
+  char *m4 = lmalloc(200);
+  char *m5 = lmalloc(300);
+  char *m6 = lmalloc(300); // no space
+  lfree(100, m2);
+  lfree(300, m5);
+  lfree(200, NULL);         // wrong arguments
+  char *m8 = lmalloc(-100); // wrong arguments
+  lfree(200, m4);
+  lfree(100, m3);
 }
 
 int main() {
   init_coremap(CORE_SIZE);
 
-  // printf("%p\t%p\t%p\t%d\n", coremap, coremap->m_addr,
-  //        coremap->m_addr + coremap->m_size, coremap->m_size);
+  // input();
+  test();
 
-  char *p1 = lmalloc(200);
-  char *p2 = lmalloc(350);
-  lfree(100, p1);
-  char *p3 = lmalloc(100);
-  lfree(350, p2);
-  char *p4 = lmalloc(400);
-  lfree(100, p3);
-  lfree(400, p4);
-  print_free_mem();
+  free(coremap);
 
   return 0;
 }
