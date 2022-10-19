@@ -7,8 +7,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ANSI_COLOR_RED "\x1b[31m"
+#define ANSI_COLOR_GREEN "\x1b[32m"
+#define ANSI_COLOR_YELLOW "\x1b[33m"
+#define ANSI_COLOR_BLUE "\x1b[34m"
+
 #define CORE_SIZE 1000
-#define VERBOSE 0
+#define VERBOSE 1
 
 struct map {
   unsigned m_size;
@@ -40,7 +45,8 @@ void init_coremap(unsigned size) {
 char *lmalloc(unsigned size) {
   // all memory has been allocated
   if (coremap == NULL) {
-    printf("****** ERROR: All kernel space has been used! ******\n");
+    printf(ANSI_COLOR_RED "****** ERROR: All kernel space has been used! "
+                          "******" ANSI_COLOR_RED "\n");
     return NULL;
   }
 
@@ -58,7 +64,8 @@ char *lmalloc(unsigned size) {
       if ((p->m_size -= size) == 0) {
         // all memory has been allocated
         if (p->next == p) {
-          printf("****** WARNING: All kernel space has been used! ******\n");
+          printf(ANSI_COLOR_YELLOW "****** WARNING: All kernel space has been "
+                                   "used! ******" ANSI_COLOR_YELLOW "\n");
           coremap = NULL;
         } else {
           coremap = p->next;
@@ -68,8 +75,9 @@ char *lmalloc(unsigned size) {
         free(p);
       }
 
-      printf("Memory allocated succeeded, address: %p - %p, size: %u\n", addr,
-             addr + size, size);
+      printf(ANSI_COLOR_GREEN "Memory allocated succeeded, address: %p - %p, "
+                              "size: %u" ANSI_COLOR_GREEN "\n",
+             addr, addr + size, size);
       if (VERBOSE) {
         print_free_mem();
       }
@@ -79,14 +87,16 @@ char *lmalloc(unsigned size) {
     }
   } while (p != q);
 
-  printf("****** ERROR: Required memory space [%d byte] is too large! ******\n",
+  printf(ANSI_COLOR_RED "****** ERROR: Required memory space [%d byte] is too "
+                        "large! ******" ANSI_COLOR_RED "\n",
          size);
   return NULL;
 }
 
 void lfree(unsigned size, char *addr) {
   if (addr == NULL) {
-    printf("****** ERROR: Memory address is NULL! ******\n");
+    printf(ANSI_COLOR_RED
+           "****** ERROR: Memory address is NULL! ******" ANSI_COLOR_RED "\n");
   }
 
   // all memory has been allocated
@@ -99,9 +109,14 @@ void lfree(unsigned size, char *addr) {
     return;
   }
 
-  struct map *p = coremap; // TODO after free, need to change coremap position
   // find the right address, let addr between p->m_addr & p->next->m_addr
-  if (p->next != p) { // No need to consider the case of only one node
+  struct map *p = coremap; // TODO after free, need to change coremap position
+  while ((p->m_addr < addr &&
+          p->next->m_addr > addr) ||       // e.g. .. 100 .. [250] .. 300 ..
+         ((p->m_addr < addr ||             // e.g. [50] .. 100 ..
+           p->next->m_addr > addr) &&      // e.g. .. 800 [900]
+          p->m_addr >= p->next->m_addr)) { // = for only one node
+    p = p->next;
   }
 
   if (p->m_addr + p->m_size == addr) {
@@ -129,8 +144,10 @@ void lfree(unsigned size, char *addr) {
     }
   }
 
-  printf("Memory free succeeded, address: %p - %p, size: %u\n", addr,
-         addr + size, size);
+  printf(ANSI_COLOR_GREEN
+         "Memory free succeeded, address: %p - %p, size: %u" ANSI_COLOR_GREEN
+         "\n",
+         addr, addr + size, size);
   if (VERBOSE) {
     print_free_mem();
   }
@@ -139,14 +156,16 @@ void lfree(unsigned size, char *addr) {
 
 // print free memory partition
 void print_free_mem() {
-  printf("****************Start Print****************\n");
+  printf(ANSI_COLOR_BLUE
+         "****************Start Print****************" ANSI_COLOR_BLUE "\n");
   struct map *p = coremap;
   printf("Avaliable memory partition:\n");
   do {
     printf("memory address: %p - %p, size: %u\n", p->m_addr,
            p->m_addr + p->m_size, p->m_size);
   } while (p != coremap);
-  printf("****************End Print****************\n");
+  printf(ANSI_COLOR_BLUE
+         "****************End Print****************" ANSI_COLOR_BLUE "\n");
   return;
 }
 
