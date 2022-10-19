@@ -48,7 +48,8 @@ void init_coremap(unsigned size) {
 char *lmalloc(unsigned size) {
   // wrong arguments
   if (size <= 0 || size >= CORE_SIZE) {
-    printf(ANSI_COLOR_RED "****** ERROR: wrong arguments! ******" ANSI_COLOR_RESET "\n");
+    printf(ANSI_COLOR_RED
+           "****** ERROR: wrong arguments! ******" ANSI_COLOR_RESET "\n");
     return NULL;
   }
   // all memory has been allocated
@@ -104,7 +105,8 @@ char *lmalloc(unsigned size) {
 void lfree(unsigned size, char *addr) {
   // wrong arguments
   if (size <= 0 || size >= CORE_SIZE || addr == NULL) {
-    printf(ANSI_COLOR_RED "****** ERROR: wrong arguments! ******" ANSI_COLOR_RESET "\n");
+    printf(ANSI_COLOR_RED
+           "****** ERROR: wrong arguments! ******" ANSI_COLOR_RESET "\n");
     return;
   }
 
@@ -115,11 +117,14 @@ void lfree(unsigned size, char *addr) {
     coremap->m_size = size;
     coremap->prior = coremap;
     coremap->next = coremap;
+    if (VERBOSE) {
+      print_free_mem();
+    }
     return;
   }
 
   // find the right address, let addr between p->m_addr & p->next->m_addr
-  struct map *p = coremap; // TODO after free, need to change coremap position
+  struct map *p = coremap;
   while (!((p->m_addr < addr &&
             p->next->m_addr > addr) ||        // e.g. .. 100 .. [250] .. 300 ..
            ((p->m_addr < addr ||              // e.g. [50] .. 100 ..
@@ -134,7 +139,7 @@ void lfree(unsigned size, char *addr) {
       struct map *q = p->next;
       p->next = q->next;
       q->next->prior = p;
-      if (coremap == q) {
+      if (coremap == q) { // after free, need to change coremap pointer val
         coremap = p;
       }
       free(q);
@@ -226,19 +231,23 @@ void test() {
   char *m4 = lmalloc(200);
   char *m5 = lmalloc(300);
   char *m6 = lmalloc(300); // no space
+  char *m7 = lmalloc(200);
   lfree(100, m2);
   lfree(300, m5);
   lfree(200, NULL);         // wrong arguments
   char *m8 = lmalloc(-100); // wrong arguments
+  lfree(200, m7);
+  char *m9 = lmalloc(100); // allocation after free
   lfree(200, m4);
+  lfree(100, m9);
   lfree(100, m3);
 }
 
 int main() {
   init_coremap(CORE_SIZE);
 
-  // input();
-  test();
+  input();
+  // test();
 
   free(coremap);
 
