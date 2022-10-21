@@ -263,79 +263,139 @@ int main() {
 }
 
 m 100
-m 200
-m 200
-m 700
-m 500
+m 100
 m 100
 f 100 0
-f 500 500
+m 200
+m 300
+m 300
+m 200
+f 100 100
+f 300 500
+f -100 100
+m -100
+f 200 800
+m 100
 f 200 300
-f 200 100
+f 100 0
+f 100 200
 q
 
 Simulation kernel space allocation succeeded!
-kernel address: 0x5620da79b2d0 - 0x5620da79b6b8, space size: 1000
+kernel address: 0x5632ab8622d0 - 0x5632ab8626b8, space size: 1000
 Input command, h help, q quit.
-Memory allocated succeeded, address: 0x5620da79b2d0 - 0x5620da79b334, size: 100
+Memory allocated succeeded, address: 0x5632ab8622d0 - 0x5632ab862334, size: 100
 ****************Start Print****************
 Avaliable memory partition:
-memory address: 0x5620da79b334 - 0x5620da79b6b8, size: 900
+memory address: 0x5632ab862334 - 0x5632ab8626b8, size: 900
 ****************End Print****************
 Input command, h help, q quit.
 Input command, h help, q quit.
-Memory allocated succeeded, address: 0x5620da79b334 - 0x5620da79b3fc, size: 200
+Memory allocated succeeded, address: 0x5632ab862334 - 0x5632ab862398, size: 100
 ****************Start Print****************
 Avaliable memory partition:
-memory address: 0x5620da79b3fc - 0x5620da79b6b8, size: 700
+memory address: 0x5632ab862398 - 0x5632ab8626b8, size: 800
 ****************End Print****************
 Input command, h help, q quit.
 Input command, h help, q quit.
-Memory allocated succeeded, address: 0x5620da79b3fc - 0x5620da79b4c4, size: 200
+Memory allocated succeeded, address: 0x5632ab862398 - 0x5632ab8623fc, size: 100
 ****************Start Print****************
 Avaliable memory partition:
-memory address: 0x5620da79b4c4 - 0x5620da79b6b8, size: 500
+memory address: 0x5632ab8623fc - 0x5632ab8626b8, size: 700
 ****************End Print****************
 Input command, h help, q quit.
 Input command, h help, q quit.
-****** ERROR: Required memory space [700 byte] is too large! ******
-Input command, h help, q quit.
-Input command, h help, q quit.
-****** WARNING: All kernel space has been used! ******
-Memory allocated succeeded, address: 0x5620da79b4c4 - 0x5620da79b6b8, size: 500
-****************Start Print****************
-None avaliable memory partition.
-Input command, h help, q quit.
-Input command, h help, q quit.
-****** ERROR: All kernel space has been used! ******
-Input command, h help, q quit.
-Input command, h help, q quit.
+Memory free succeeded, address: 0x5632ab8622d0 - 0x5632ab862334, size: 100
 ****************Start Print****************
 Avaliable memory partition:
-memory address: 0x5620da79b2d0 - 0x5620da79b334, size: 100
+memory address: 0x5632ab8623fc - 0x5632ab8626b8, size: 700
+memory address: 0x5632ab8622d0 - 0x5632ab862334, size: 100
 ****************End Print****************
 Input command, h help, q quit.
 Input command, h help, q quit.
-Memory free succeeded, address: 0x5620da79b4c4 - 0x5620da79b6b8, size: 500
+Memory allocated succeeded, address: 0x5632ab8623fc - 0x5632ab8624c4, size: 200
 ****************Start Print****************
 Avaliable memory partition:
-memory address: 0x5620da79b2d0 - 0x5620da79b334, size: 100
-memory address: 0x5620da79b4c4 - 0x5620da79b6b8, size: 500
+memory address: 0x5632ab8624c4 - 0x5632ab8626b8, size: 500
+memory address: 0x5632ab8622d0 - 0x5632ab862334, size: 100
 ****************End Print****************
 Input command, h help, q quit.
 Input command, h help, q quit.
-Memory free succeeded, address: 0x5620da79b3fc - 0x5620da79b4c4, size: 200
+Memory allocated succeeded, address: 0x5632ab8624c4 - 0x5632ab8625f0, size: 300
 ****************Start Print****************
 Avaliable memory partition:
-memory address: 0x5620da79b2d0 - 0x5620da79b334, size: 100
-memory address: 0x5620da79b3fc - 0x5620da79b6b8, size: 700
+memory address: 0x5632ab8625f0 - 0x5632ab8626b8, size: 200
+memory address: 0x5632ab8622d0 - 0x5632ab862334, size: 100
 ****************End Print****************
 Input command, h help, q quit.
 Input command, h help, q quit.
-Memory free succeeded, address: 0x5620da79b334 - 0x5620da79b3fc, size: 200
+****** ERROR: Required memory space [300 byte] is too large! ******
+Input command, h help, q quit.
+Input command, h help, q quit.
+Memory allocated succeeded, address: 0x5632ab8625f0 - 0x5632ab8626b8, size: 200
 ****************Start Print****************
 Avaliable memory partition:
-memory address: 0x5620da79b2d0 - 0x5620da79b6b8, size: 1000
+memory address: 0x5632ab8622d0 - 0x5632ab862334, size: 100
+****************End Print****************
+Input command, h help, q quit.
+Input command, h help, q quit.
+Memory free succeeded, address: 0x5632ab862334 - 0x5632ab862398, size: 100
+****************Start Print****************
+Avaliable memory partition:
+memory address: 0x5632ab8622d0 - 0x5632ab862398, size: 200
+****************End Print****************
+Input command, h help, q quit.
+Input command, h help, q quit.
+Memory free succeeded, address: 0x5632ab8624c4 - 0x5632ab8625f0, size: 300
+****************Start Print****************
+Avaliable memory partition:
+memory address: 0x5632ab8622d0 - 0x5632ab862398, size: 200
+memory address: 0x5632ab8624c4 - 0x5632ab8625f0, size: 300
+****************End Print****************
+Input command, h help, q quit.
+Input command, h help, q quit.
+****** ERROR: wrong arguments! ******
+Input command, h help, q quit.
+Input command, h help, q quit.
+****** ERROR: wrong arguments! ******
+Input command, h help, q quit.
+Input command, h help, q quit.
+Memory free succeeded, address: 0x5632ab8625f0 - 0x5632ab8626b8, size: 200
+****************Start Print****************
+Avaliable memory partition:
+memory address: 0x5632ab8622d0 - 0x5632ab862398, size: 200
+memory address: 0x5632ab8624c4 - 0x5632ab8626b8, size: 500
+****************End Print****************
+Input command, h help, q quit.
+Input command, h help, q quit.
+Memory allocated succeeded, address: 0x5632ab8622d0 - 0x5632ab862334, size: 100
+****************Start Print****************
+Avaliable memory partition:
+memory address: 0x5632ab862334 - 0x5632ab862398, size: 100
+memory address: 0x5632ab8624c4 - 0x5632ab8626b8, size: 500
+****************End Print****************
+Input command, h help, q quit.
+Input command, h help, q quit.
+Memory free succeeded, address: 0x5632ab8623fc - 0x5632ab8624c4, size: 200
+****************Start Print****************
+Avaliable memory partition:
+memory address: 0x5632ab862334 - 0x5632ab862398, size: 100
+memory address: 0x5632ab8623fc - 0x5632ab8626b8, size: 700
+****************End Print****************
+Input command, h help, q quit.
+Input command, h help, q quit.
+Memory free succeeded, address: 0x5632ab8622d0 - 0x5632ab862334, size: 100
+****************Start Print****************
+Avaliable memory partition:
+memory address: 0x5632ab8622d0 - 0x5632ab862398, size: 200
+memory address: 0x5632ab8623fc - 0x5632ab8626b8, size: 700
+****************End Print****************
+Input command, h help, q quit.
+Input command, h help, q quit.
+Memory free succeeded, address: 0x5632ab862398 - 0x5632ab8623fc, size: 100
+****************Start Print****************
+Avaliable memory partition:
+memory address: 0x5632ab8622d0 - 0x5632ab8626b8, size: 1000
 ****************End Print****************
 Input command, h help, q quit.
 Input command, h help, q quit.
