@@ -204,7 +204,7 @@ void input() {
     printf("Input command, h help, q quit.\n");
     do {
       cmdchar = getchar();
-    } while (cmdchar == ' ' || cmdchar == '\t' || cmdchar == '\n');
+    } while (cmdchar == ' ' || cmdchar == '\t' || cmdchar == '\n' || cmdchar == '\r');
 
     switch (cmdchar) {
     case 'm':
@@ -225,6 +225,7 @@ void input() {
       break;
 
     default:
+      printf("unknown command %c.\n", cmdchar);
       continue;
     }
   } while (cmdchar != 'q');
