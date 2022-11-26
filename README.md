@@ -11,7 +11,7 @@ View all courses by [switching branches](https://github.com/ysyszheng/SJTU-Cours
 * [NIS2331 Computer Organization and Architecture](https://github.com/ysyszheng/SJTU-Course/tree/NIS2331)
 * [NIS2328 Software Engineering](https://github.com/ysyszheng/SJTU-Course/tree/NIS2328)
 * [ECON2402 Econometrics](https://github.com/ysyszheng/SJTU-Course/tree/ECON2402)
-* [GA903 Landscape Architecture](https://github.com/ysyszheng/SJTU-Course/tree/GA903)
+<!-- * [GA903 Landscape Architecture](https://github.com/ysyszheng/SJTU-Course/tree/GA903) -->
 
 ## 2022 Fall
 * [NIS3325 Operating System](https://github.com/ysyszheng/SJTU-Course/tree/NIS3325)
