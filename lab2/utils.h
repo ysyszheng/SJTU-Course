@@ -28,8 +28,8 @@ struct msgtype {
 
 #define SHM_SIZE 1024
 #define SHMKEY rand()
-#define SEMKEY1 rand() + 1
-#define SEMKEY2 rand() + 2
+#define SEMKEY1 (rand() + 1)
+#define SEMKEY2 (rand() + 2)
 
 int creatsem(key_t key) {
   int semid;
