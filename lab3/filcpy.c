@@ -79,7 +79,7 @@ int main() {
   clock_t begin, end;
   double time_spent;
 
-  printf("一次读写一个字节:\n");
+  // printf("一次读写一个字节:\n");
   // printf("一次读写1024字节:\n");
 
   begin = clock();
