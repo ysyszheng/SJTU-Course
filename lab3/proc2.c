@@ -13,7 +13,6 @@ int main() {
   fd = open("fifo", O_RDONLY);
   while ((n = read(fd, buf, sizeof(buf))) > 0) {
     fwrite(buf, 1, n, fout);
-    printf("READ FIFO:\n%s\n", buf);
   }
   close(fd);
   fclose(fout);

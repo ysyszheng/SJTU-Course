@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 PART THE FIRST.
      It is an ancient Mariner,
      And he stoppeth one of three.
@@ -62699,5 +62697,16 @@ PART THE SEVENTH.
      Both man and bird and beast.
 
      He prayeth best, who loveth best
-     All things both gre
->>>>>>> refs/remotes/origin/NIS3325
+     All things both great and small;
+     For the dear God who loveth us
+     He made and loveth all.
+
+     The Mariner, whose eye is bright,
+     Whose beard with age is hoar,
+     Is gone: and now the Wedding-Guest
+     Turned from the bridegroom's door.
+
+     He went like one that hath been stunned,
+     And is of sense forlorn:
+     A sadder and a wiser man,
+     He rose the morrow morn.
