@@ -14,3 +14,4 @@ fifo: proc1.c proc2.c
 rm:
 	rm filcpy
 	rm pipcpy
+	rm proc1 proc2
