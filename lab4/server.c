@@ -4,11 +4,12 @@ int main() {
   int newsockfd, sockfd, length, count;
   struct sockaddr_in server;
   char buf[1024];
-  FILE *frecv;
+  FILE *frecv = fopen("out.txt", "w");
 
   sockfd = socket(AF_INET, SOCK_STREAM, 0);
   if (sockfd < 0) {
     printf("[ERROR]:\tsocket\n");
+    exit(1);
   }
 
   server.sin_family = AF_INET;
@@ -18,32 +19,23 @@ int main() {
 
   if (bind(sockfd, (struct sockaddr *)&server, sizeof(server)) < 0) {
     printf("[ERROR]:\tbind\n");
-  }
-
-  length = sizeof(server);
-  if (getsockname(sockfd, (struct sockaddr *)&server, &length) < 0) {
-    printf("[ERROR]:\tgetsockname\n");
+    exit(1);
   }
 
   listen(sockfd, 5);
   printf("[INFO]:\tlisten\n");
+  newsockfd = accept(sockfd, (struct sockaddr *)0, (int *)0);
 
-  while (1) {
-    newsockfd = accept(sockfd, (struct sockaddr *)0, (int *)0);
-
-    if (!fork()) {
-      close(sockfd);
-      bzero(buf, sizeof(buf));
-      if ((count = recv(sockfd, buf, sizeof(buf), 0)) < 0) {
-        printf("[ERROR]:\tread\n");
-        break;
-      }
-
-      frecv = fopen("out.txt", "w");
-      fwrite(buf, 1, count, frecv);
-      printf("[INFO]:\twrite %d bytes\n", count);
-      fclose(frecv);
-    }
-    close(newsockfd);
+  bzero(buf, sizeof(buf));
+  while ((count = recv(newsockfd, buf, sizeof(buf), 0)) > 0) {
+    fwrite(buf, 1, count, frecv);
+    printf("[INFO]:\tserver write %d bytes\n", count);
+    bzero(buf, sizeof(buf));
   }
+
+  printf("[INFO]:\tEOF\n");
+
+  close(sockfd);
+  close(newsockfd);
+  fclose(frecv);
 }

@@ -10,11 +10,12 @@ int main(int argc, char **argv) {
   sockfd = socket(AF_INET, SOCK_STREAM, 0);
   if (sockfd < 0) {
     printf("[ERROR]:\tsocket\n");
+    exit(1);
   }
 
   if ((hp = gethostbyname(argv[1])) == NULL) {
     printf("[ERROR]:\tUnknow hp %s\n", argv[1]);
-    exit(2);
+    exit(1);
   }
 
   server.sin_family = AF_INET;
@@ -23,15 +24,17 @@ int main(int argc, char **argv) {
 
   if (connect(sockfd, (struct sockaddr *)&server, sizeof(server)) < 0) {
     printf("[ERROR]:\tconnect\n");
+    exit(1);
   }
 
   printf("[INFO]:\tconnect\n");
 
-  while ((n = fread(msg, 1, sizeof(msg), fsend)) > 0) {
-    if (send(sockfd, msg, strlen(msg), 0) < 0) {
+  bzero(msg, sizeof(msg));
+  while ((fread(msg, 1, sizeof(msg), fsend)) > 0) {
+    if ((n = send(sockfd, msg, strlen(msg), 0)) < 0) {
       printf("[ERROR]:\tsend\n");
     }
-    printf("[INFO]:\tsend %d bytes\n", n);
+    printf("[INFO]:\tclient send %d bytes\n", n);
     bzero(msg, sizeof(msg));
   }
 
