@@ -26,16 +26,17 @@ int main() {
   }
 
   listen(sockfd, 5);
+  printf("[INFO]:\tlisten\n");
 
   while (1) {
     newsockfd = accept(sockfd, (struct sockaddr *)0, (int *)0);
-    printf("[INFO]:\tconnect success\n");
 
     if (!fork()) {
       close(sockfd);
       bzero(buf, sizeof(buf));
       if ((count = recv(sockfd, buf, sizeof(buf), 0)) < 0) {
         printf("[ERROR]:\tread\n");
+        break;
       }
 
       frecv = fopen("out.txt", "w");

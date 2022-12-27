@@ -25,11 +25,13 @@ int main(int argc, char **argv) {
     printf("[ERROR]:\tconnect\n");
   }
 
+  printf("[INFO]:\tconnect\n");
+
   while ((n = fread(msg, 1, sizeof(msg), fsend)) > 0) {
     if (send(sockfd, msg, strlen(msg), 0) < 0) {
       printf("[ERROR]:\tsend\n");
     }
-    printf("[INFO]:\tsend %d bytes", n);
+    printf("[INFO]:\tsend %d bytes\n", n);
     bzero(msg, sizeof(msg));
   }
 
