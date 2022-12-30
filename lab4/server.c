@@ -4,6 +4,7 @@ int main() {
   int newsockfd, sockfd, length, count;
   struct sockaddr_in server;
   char buf[1024];
+  // FILE *frecv = fopen("out", "wb");
   FILE *frecv = fopen("out.txt", "w");
 
   sockfd = socket(AF_INET, SOCK_STREAM, 0);

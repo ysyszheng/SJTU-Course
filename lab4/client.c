@@ -5,6 +5,7 @@ int main(int argc, char **argv) {
   struct sockaddr_in server;
   struct hostent *hp, *gethostbyname();
   char msg[1024];
+  // FILE *fsend = fopen("in", "rb");
   FILE *fsend = fopen("in.txt", "r");
 
   sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -30,8 +31,8 @@ int main(int argc, char **argv) {
   printf("[INFO]:\tconnect\n");
 
   bzero(msg, sizeof(msg));
-  while ((fread(msg, 1, sizeof(msg), fsend)) > 0) {
-    if ((n = send(sockfd, msg, strlen(msg), 0)) < 0) {
+  while ((n = fread(msg, 1, sizeof(msg), fsend)) > 0) {
+    if ((send(sockfd, msg, n, 0)) < 0) {
       printf("[ERROR]:\tsend\n");
     }
     printf("[INFO]:\tclient send %d bytes\n", n);
